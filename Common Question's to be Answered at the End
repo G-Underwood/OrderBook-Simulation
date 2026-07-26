@@ -1,0 +1,30 @@
+# Common Question's to be Answered at the End
+
+## Data Structures & Complexity
+
+### What data structure did I use to store price levels, and why?
+### What's the time complexity of insert / cancel / best-bid lookup / match?
+### Why might a real exchange avoid a plain sorted list or balanced BST for price levels?
+### If price levels are ticks (discrete), is there a data structure that beats O(log n) for insert/lookup?
+### What's the time complexity of cancelling an arbitrary order by ID? What does my 'Order' need to support that efficiently?
+
+## Market Microstructure
+
+### What's the economic purpose of price-time priority? What incentive does it create for market participants?
+### Why do some markets use pro-rata instead? What kind of order flow does that attract or discourage?
+### What is the difference between a limit order and a market order in terms of who bears execution risk?
+### What happens to an unfilled market order at my book's current best price, does it rest, cancel, or walk the book? What did real venues choose, and why?
+### What's the difference between "taking liquidity" and "providing liquidity," and why do exchanges often charge/rebate differently for each (maker-taker fees)?
+
+## Software Architecture
+
+### Why did I separate order storage from matching logic (or why didn't I)? What does that buy me if I wanted to add a second matching policy later?
+### How would I test the matching engine in isolation, without needing traders or a live simulation running?
+### Where does my system have a single source of truth, and where might inconsistency creep in?
+### If two orders arrive at literally the same simulated timestamp, how does the system decide who's "first," and is that deterministic (important for reproducible tests)?
+
+## Simulation | Market Maker Design
+
+### What's the market maker actually optimizing for, spread capture, inventory risk, or both? How do those trade off?
+### What happens to the market maker's PnL and risk if it never manages inventory (e.g. Avellaneda-Stoenka style skewing)? Can it be demonstrated with a plot?
+### How do you avoid the simulation being "rigged" — i.e. how do I know profit isn't just an artifact of unrealistic trader behavior?
